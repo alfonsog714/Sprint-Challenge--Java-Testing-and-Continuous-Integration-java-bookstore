@@ -71,4 +71,14 @@ public class Book extends Auditable
     {
         this.copyyear = copyyear;
     }
+
+    public List<Author> getAuthors()
+    {
+        return authors;
+    }
+
+    public void setAuthors(List<Author> authors)
+    {
+        this.authors = authors;
+    }
 }
