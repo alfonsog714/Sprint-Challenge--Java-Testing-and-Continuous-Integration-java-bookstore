@@ -5,9 +5,7 @@ import com.lambdaschool.starthere.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,5 +21,26 @@ public class BooksController
     {
         List<Book> books = bookService.findAll();
         return new ResponseEntity<>(books, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/book/{id}", produces = {"application/json"})
+    public ResponseEntity<?> getBookById(@PathVariable long id)
+    {
+        Book b = bookService.findBookById(id);
+        return new ResponseEntity<>(b, HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/{id}", consumes = {"application/json"})
+    public ResponseEntity<?> updateBook(@RequestBody Book updateBook, @PathVariable long id)
+    {
+        bookService.update(updateBook, id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/books/{id}")
+    public ResponseEntity<?> deleteBookById(@PathVariable long id)
+    {
+        bookService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

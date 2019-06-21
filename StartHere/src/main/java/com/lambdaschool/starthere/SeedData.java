@@ -80,12 +80,12 @@ public class SeedData implements CommandLineRunner
         ArrayList<Author> loisOnly = new ArrayList<>();
         loisOnly.add(lois);
 //
-        Book giver = new Book("The Giver","978-3-16-148410-0", 1993);
+        Book giver = new Book("The Giver","978-3-16-148410-0", 1993, loisOnly);
         bookService.save(giver);
 
         books.add(giver);
 //
-        Book numberTheStars = new Book("Number the Stars", "368-3-16-148930-3", 1989);
+        Book numberTheStars = new Book("Number the Stars", "368-3-16-148930-3", 1989, loisOnly);
         bookService.save(numberTheStars);
         books.add(numberTheStars);
 
