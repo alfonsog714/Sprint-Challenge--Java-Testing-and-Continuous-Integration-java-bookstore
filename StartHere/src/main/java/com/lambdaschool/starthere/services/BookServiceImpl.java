@@ -57,7 +57,7 @@ public class BookServiceImpl implements BookService
         ArrayList<Author> newAuthors = new ArrayList<>();
         for (Author a : book.getAuthors())
         {
-            newBook.getAuthors().add(new Author(a.getLastname(), a.getFirstname(), a.getBooks()));
+            newAuthors.add(new Author(a.getLastname(), a.getFirstname(), a.getBooks()));
         }
         newBook.setAuthors(newAuthors);
 
