@@ -5,6 +5,7 @@ import com.lambdaschool.starthere.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class BooksController
         return new ResponseEntity<>(b, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_DATA')")
     @PutMapping(value = "/{id}", consumes = {"application/json"})
     public ResponseEntity<?> updateBook(@RequestBody Book updateBook, @PathVariable long id)
     {
@@ -37,6 +39,7 @@ public class BooksController
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping("/books/{id}")
     public ResponseEntity<?> deleteBookById(@PathVariable long id)
     {
