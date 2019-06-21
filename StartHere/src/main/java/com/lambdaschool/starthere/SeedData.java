@@ -1,8 +1,6 @@
 package com.lambdaschool.starthere;
 
-import com.lambdaschool.starthere.models.Role;
-import com.lambdaschool.starthere.models.User;
-import com.lambdaschool.starthere.models.UserRoles;
+import com.lambdaschool.starthere.models.*;
 import com.lambdaschool.starthere.services.RoleService;
 import com.lambdaschool.starthere.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,5 +62,15 @@ public class SeedData implements CommandLineRunner
         users.add(new UserRoles(new User(), r2));
         User u5 = new User("Jane", "password", users);
         userService.save(u5);
+
+        // Lois Lowry Books
+        ArrayList<Book> books = new ArrayList<>();
+        books.add(new Book("The Giver", "978-3-16-148410-0", 1993));
+        books.add(new Book("Number the Stars", "368-3-16-148930-3", 1989) );
+
+        // Authors
+        Author lois = new Author("Lowry", "Lois", books);
+
+
     }
 }
