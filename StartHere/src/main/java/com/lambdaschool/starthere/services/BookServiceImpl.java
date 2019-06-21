@@ -4,8 +4,6 @@ import com.lambdaschool.starthere.models.Author;
 import com.lambdaschool.starthere.models.Book;
 import com.lambdaschool.starthere.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -54,12 +52,15 @@ public class BookServiceImpl implements BookService
         newBook.setCopyyear(book.getCopyyear());
         newBook.setIsbn(book.getIsbn());
 
-        ArrayList<Author> newAuthors = new ArrayList<>();
-        for (Author a : book.getAuthors())
+        if (book.getAuthors().size() > 0)
         {
-            newAuthors.add(new Author(a.getLastname(), a.getFirstname(), a.getBooks()));
+            ArrayList<Author> newAuthors = new ArrayList<>();
+            for (Author a : book.getAuthors())
+            {
+                newAuthors.add(new Author(a.getLastname(), a.getFirstname(), a.getBooks()));
+            }
+            newBook.setAuthors(newAuthors);
         }
-        newBook.setAuthors(newAuthors);
 
         return bookrepos.save(newBook);
     }

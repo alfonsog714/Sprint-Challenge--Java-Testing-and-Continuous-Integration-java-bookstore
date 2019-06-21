@@ -1,11 +1,10 @@
 package com.lambdaschool.starthere.models;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "books")
 public class Book extends Auditable
 {
     @Id
@@ -30,6 +29,14 @@ public class Book extends Auditable
         this.booktitle = booktitle;
         this.isbn = isbn;
         this.copyyear = copyyear;
+    }
+
+    public Book(String booktitle, String isbn, int copyyear, List<Author> authors)
+    {
+        this.booktitle = booktitle;
+        this.isbn = isbn;
+        this.copyyear = copyyear;
+        this.authors = authors;
     }
 
     public long getBookid()

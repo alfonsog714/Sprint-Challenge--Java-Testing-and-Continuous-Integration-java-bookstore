@@ -52,15 +52,18 @@ public class AuthorServiceImpl implements AuthorService
         newAuthor.setFirstname(author.getFirstname());
         newAuthor.setLastname(author.getLastname());
 
-        ArrayList<Book> newBooks = new ArrayList<>();
-        for (Book b : author.getBooks())
-        {
-            newBooks.add(new Book(b.getBooktitle(), b.getIsbn(), b.getCopyyear()));
-        }
+//        if (author.getBooks().size() > 0)
+//        {
+//            ArrayList<Book> newBooks = new ArrayList<>();
+//            for (Book b : author.getBooks())
+//            {
+//                newBooks.add(new Book(b.getBooktitle(), b.getIsbn(), b.getCopyyear()));
+//            }
+//
+//            newAuthor.setBooks(newBooks);
+//        }
 
-        newAuthor.setBooks(newBooks);
-
-        return arepos.save(author);
+        return arepos.save(newAuthor);
     }
 
     @Override

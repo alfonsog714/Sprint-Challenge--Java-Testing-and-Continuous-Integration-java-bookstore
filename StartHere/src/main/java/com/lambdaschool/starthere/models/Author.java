@@ -3,6 +3,8 @@ package com.lambdaschool.starthere.models;
 import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "authors")
 public class Author
 {
     @Id
