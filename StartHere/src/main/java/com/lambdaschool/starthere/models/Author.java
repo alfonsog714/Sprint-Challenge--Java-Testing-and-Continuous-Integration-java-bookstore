@@ -1,5 +1,7 @@
 package com.lambdaschool.starthere.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,11 +17,13 @@ public class Author
 
     private String firstname;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("authors")
     @JoinTable(
             name = "books_authors",
             joinColumns = @JoinColumn(name = "authorid"),
             inverseJoinColumns = @JoinColumn(name = "bookid"))
+
     private List<Book> books;
 
     public Author()

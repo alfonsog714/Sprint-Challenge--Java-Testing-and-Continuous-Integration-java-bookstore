@@ -34,7 +34,7 @@ public class BookServiceImpl implements BookService
     @Override
     public void delete(long id)
     {
-        if(bookrepos.findById(id).isPresent())
+        if (bookrepos.findById(id).isPresent())
         {
             bookrepos.deleteById(id);
         } else
@@ -52,15 +52,14 @@ public class BookServiceImpl implements BookService
         newBook.setCopyyear(book.getCopyyear());
         newBook.setIsbn(book.getIsbn());
 
-//        if (book.getAuthors().size() > 0)
+
+        ArrayList<Author> newAuthors = new ArrayList<>();
+//        for (Author a : book.getAuthors())
 //        {
-//            ArrayList<Author> newAuthors = new ArrayList<>();
-//            for (Author a : book.getAuthors())
-//            {
-//                newAuthors.add(new Author(a.getLastname(), a.getFirstname(), a.getBooks()));
-//            }
-//            newBook.setAuthors(newAuthors);
+//            newAuthors.add(new Author(a.getLastname(), a.getFirstname(), a.getBooks()));
 //        }
+//        newBook.setAuthors(newAuthors);
+
 
         return bookrepos.save(newBook);
     }
@@ -71,11 +70,11 @@ public class BookServiceImpl implements BookService
     {
         Book currentBook = bookrepos.findById(id).orElseThrow(() -> new EntityNotFoundException(Long.toString(id)));
 
-        if(currentBook != null)
+        if (currentBook != null)
         {
-            if(id == currentBook.getBookid())
+            if (id == currentBook.getBookid())
             {
-                if(book.getIsbn() != null)
+                if (book.getIsbn() != null)
                 {
                     currentBook.setIsbn(book.getIsbn());
                 }
@@ -85,12 +84,12 @@ public class BookServiceImpl implements BookService
                     currentBook.setBooktitle(book.getBooktitle());
                 }
 
-                if(book.getCopyyear() != currentBook.getCopyyear())
+                if (book.getCopyyear() != currentBook.getCopyyear())
                 {
                     currentBook.setCopyyear(book.getCopyyear());
                 }
 
-                if(book.getAuthors().size() > 0)
+                if (book.getAuthors().size() > 0)
                 {
                     for (Author a : book.getAuthors())
                     {
@@ -103,7 +102,8 @@ public class BookServiceImpl implements BookService
             {
                 throw new EntityNotFoundException(Long.toString(id));
             }
-        } else {
+        } else
+        {
             throw new EntityNotFoundException(book.getBooktitle() + "does not exist.");
         }
     }
