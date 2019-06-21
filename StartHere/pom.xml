@@ -12,10 +12,12 @@
     <artifactId>authenticatedusers</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>authenticatedusers</name>
+    <packaging>jar</packaging>
+
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>12</java.version>
     </properties>
 
     <dependencies>
@@ -135,8 +137,7 @@
     </dependencies>
 
     <build>
-<!--        <finalName>${project.artifactId}</finalName>-->
-        <finalName>jrmmba-starthere</finalName>
+        <finalName>${project.artifactId}</finalName>
 
         <plugins>
             <plugin>
@@ -151,11 +152,11 @@
                 <artifactId>heroku-maven-plugin</artifactId>
                 <version>2.0.3</version>
                 <configuration>
-                    <appName>jrmmba-starthere</appName>
+                    <appName>alfonsog-startheresprint</appName>
                     <includeTarget>false</includeTarget>
                     <includes>
                         <!--   For windows      <include>${project.build.directory}\${project.build.finalName}.jar</include>-->
-                        <include>${project.build.directory}/${project.build.finalName}.jar</include>
+                        <include>${project.build.directory}\${project.build.finalName}.jar</include>
                     </includes>
                     <jdkVersion>${java.version}</jdkVersion>
                     <processTypes>
