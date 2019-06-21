@@ -77,18 +77,18 @@ public class SeedData implements CommandLineRunner
         authorService.save(lois);
 //
 //        // Lois Lowry Books
-//        ArrayList<Book> books = new ArrayList<>();
-//        ArrayList<Author> loisOnly = new ArrayList<>();
-//        loisOnly.add(lois);
+        ArrayList<Book> books = new ArrayList<>();
+        ArrayList<Author> loisOnly = new ArrayList<>();
+        loisOnly.add(lois);
 //
-//        Book giver = new Book("The Giver","978-3-16-148410-0", 1993, loisOnly );
-//        bookService.save(giver);
-//        books.add(giver);
+        Book giver = new Book("The Giver","978-3-16-148410-0", 1993, loisOnly );
+        bookService.save(giver);
+        books.add(giver);
 //
-//        Book numberTheStars = new Book("Number the Stars", "368-3-16-148930-3", 1989, loisOnly);
-//        bookService.save(numberTheStars);
-//        books.add(numberTheStars);
-//
-//        lois.setBooks(books);
+        Book numberTheStars = new Book("Number the Stars", "368-3-16-148930-3", 1989, loisOnly);
+        bookService.save(numberTheStars);
+        books.add(numberTheStars);
+
+        lois.setBooks(books);
     }
 }

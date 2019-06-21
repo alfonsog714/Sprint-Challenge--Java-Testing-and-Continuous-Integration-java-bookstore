@@ -52,15 +52,15 @@ public class BookServiceImpl implements BookService
         newBook.setCopyyear(book.getCopyyear());
         newBook.setIsbn(book.getIsbn());
 
-        if (book.getAuthors().size() > 0)
-        {
-            ArrayList<Author> newAuthors = new ArrayList<>();
-            for (Author a : book.getAuthors())
-            {
-                newAuthors.add(new Author(a.getLastname(), a.getFirstname(), a.getBooks()));
-            }
-            newBook.setAuthors(newAuthors);
-        }
+//        if (book.getAuthors().size() > 0)
+//        {
+//            ArrayList<Author> newAuthors = new ArrayList<>();
+//            for (Author a : book.getAuthors())
+//            {
+//                newAuthors.add(new Author(a.getLastname(), a.getFirstname(), a.getBooks()));
+//            }
+//            newBook.setAuthors(newAuthors);
+//        }
 
         return bookrepos.save(newBook);
     }
