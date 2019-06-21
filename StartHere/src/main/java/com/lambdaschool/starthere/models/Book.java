@@ -3,6 +3,8 @@ package com.lambdaschool.starthere.models;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.List;
 
 public class Book extends Auditable
 {
@@ -15,6 +17,9 @@ public class Book extends Auditable
     private String isbn;
 
     private int copyyear;
+
+    @ManyToMany(mappedBy = "books")
+    private List<Author> authors;
 
     public Book()
     {
