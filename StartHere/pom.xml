@@ -11,7 +11,7 @@
     <groupId>com.lambdaschool</groupId>
     <artifactId>authenticatedusers</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>authenticatedusers</name>
+    <name>bookstore</name>
     <packaging>jar</packaging>
 
     <description>Demo project for Spring Boot</description>
